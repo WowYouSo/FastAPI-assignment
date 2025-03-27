@@ -49,10 +49,8 @@ def get_tasks(
         db: Session = Depends(get_db),
         sort_by: str = Query(None, description="Сортировать по: title, status, creation_time"),
         order: str = Query("asc", description="Порядок сортировки: asc(в порядке возрастания) или desc(в порядке убывания)"),
-        top_n: int = Query(None,
-                           description="Вернуть топ-N задач (сортировка по возрастанию приоритета, при равенстве — по убыванию времени)"),
-        search: str = Query(None,
-                            description="Поиск задач по тексту в title или description (нечувствителен к регистру)")):
+        top_n: int = Query(None, description="Вернуть топ-N задач (сортировка по возрастанию приоритета, при равенстве — по убыванию времени)"),
+        search: str = Query(None, description="Поиск задач по тексту в title или description")):
     query = db.query(models.Task)
 
     if search:
@@ -64,8 +62,7 @@ def get_tasks(
     else:
         if sort_by:
             if sort_by not in ["title", "status", "creation_time"]:
-                raise HTTPException(status_code=400,
-                                    detail="Недопустимый критерий сортировки. Используйте: title, status, creation_time")
+                raise HTTPException(status_code=400, detail="Недопустимый критерий сортировки. Используйте: title, status, creation_time")
             sort_order = asc if order == "asc" else desc
             if sort_by == "title":
                 query = query.order_by(sort_order(models.Task.title))
