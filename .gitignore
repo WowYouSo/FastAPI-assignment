@@ -1,0 +1,5 @@
+safe_vers/
+.env
+venv/
+test.py
+test_main.py
