@@ -14,3 +14,5 @@
 coverage run -m pytest tests/
 coverage report
 ```
+
+Последняя информация о покрытии тестов есть в файле README_COVERAGE
