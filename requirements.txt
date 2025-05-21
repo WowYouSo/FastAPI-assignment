@@ -5,3 +5,8 @@ pydantic
 passlib
 python-jose
 python-multipart
+pytest
+pytest-cov
+httpx
+python-dotenv
+locust

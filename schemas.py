@@ -8,7 +8,7 @@ class TaskCreate(BaseModel):
     status: str = "в ожидании"
     priority: int = 1
 
-class Task(BaseModel):
+class TaskInfo(BaseModel):
     id: int
     title: str
     description: Union[str, None]
@@ -22,7 +22,7 @@ class UserCreate(BaseModel):
     username: str
     password: str
 
-class User(BaseModel):
+class UserInfo(BaseModel):
     id: int
     username: str
     class Config:
